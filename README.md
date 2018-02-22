@@ -1,8 +1,8 @@
 # S2 Geometry Library
 
-THIS IS A FORK WHOSE ONLY PURPOSE IS TO REMOVE THE DEPENDENCIES
-UPON THE GOOGLE LOGGING (GLOG) AND GOOGLE FLAGS (GFLAGS) LIBRARIES
+THIS IS A FORK!!!
 
+REMOVES DEPENDENCIES ON GLOG and GFLAGS LIBRARIES
 IT IS INTENDED FOR USE IN STATIC LINK USE CASES
 
 ## Overview
@@ -25,16 +25,12 @@ S2 documentation can be found on [s2geometry.io](http://s2geometry.io).
 * [CMake](http://www.cmake.org/)
 * A C++ compiler with C++11 support, such as [g++](https://gcc.gnu.org/)
   \>= 4.7.
-* [gflags command line flags](https://github.com/gflags/gflags)
-* [glog logging module](https://github.com/google/glog)
 * [OpenSSL](https://github.com/openssl/openssl) (for its bignum library)
-* [googletest testing framework](https://github.com/google/googletest)
-  (to build tests and example programs, optional)
 
 On Ubuntu, all of these can be installed via apt-get:
 
 ```
-sudo apt-get install cmake libgflags-dev libgoogle-glog-dev libgtest-dev openssl
+sudo apt-get install cmake openssl
 ```
 
 Otherwise, you may need to install some from source.
@@ -43,7 +39,7 @@ On macOS, use [MacPorts](http://www.macports.org/) or
 [Homebrew](http://brew.sh/).  For MacPorts:
 
 ```
-sudo port install cmake gflags google-glog openssl
+sudo port install cmake openssl
 ```
 
 Do not install `gtest` from MacPorts; instead download [release
@@ -109,7 +105,7 @@ sudo apt-get install swig
 
 or on macOS:
 
-```
+```git s
 sudo port install swig
 ```
 Expect to see some warnings if you build with swig 2.0.
