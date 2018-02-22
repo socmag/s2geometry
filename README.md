@@ -1,5 +1,10 @@
 # S2 Geometry Library
 
+THIS IS A FORK WHOSE ONLY PURPOSE IS TO REMOVE THE DEPENDENCIES
+UPON THE GOOGLE LOGGING (GLOG) AND GOOGLE FLAGS (GFLAGS) LIBRARIES
+
+IT IS INTENDED FOR USE IN STATIC LINK USE CASES
+
 ## Overview
 
 This is a package for manipulating geometric shapes. Unlike many geometry
