@@ -99,7 +99,7 @@
 
 // To be deleted macros. All macros are going te be renamed with ABSL_ prefix.
 // TODO(user): delete macros
-#define MUST_USE_RESULT
+#define S2_MUST_USE_RESULT
 
 #else  // SWIG
 
@@ -470,9 +470,9 @@
 // TODO(user): delete macros
 #if ABSL_HAVE_ATTRIBUTE(warn_unused_result) || \
     (defined(__GNUC__) && !defined(__clang__))
-#define MUST_USE_RESULT __attribute__ ((warn_unused_result))
+#define S2_MUST_USE_RESULT __attribute__ ((warn_unused_result))
 #else
-#define MUST_USE_RESULT
+#define S2_MUST_USE_RESULT
 #endif
 
 // ABSL_ATTRIBUTE_HOT, ABSL_ATTRIBUTE_COLD

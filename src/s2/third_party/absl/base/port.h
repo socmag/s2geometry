@@ -56,7 +56,7 @@ using std::string;
 // to be in absl, not //base.  string_view defines hashes.
 //
 // -----------------------------------------------------------------------------
-// HASH_NAMESPACE, HASH_NAMESPACE_DECLARATION_START/END
+// HASH_NAMESPACE, S2_HASH_NAMESPACE_DECLARATION_START/END
 // -----------------------------------------------------------------------------
 
 // Define the namespace for pre-C++11 functors for hash_map and hash_set.
@@ -91,11 +91,11 @@ using std::string;
 #ifndef HASH_NAMESPACE
 // TODO(user): try to delete this.
 // I think gcc 2.95.3 was the last toolchain to use this.
-#define HASH_NAMESPACE_DECLARATION_START
-#define HASH_NAMESPACE_DECLARATION_END
+#define S2_HASH_NAMESPACE_DECLARATION_START
+#define S2_HASH_NAMESPACE_DECLARATION_END
 #else
-#define HASH_NAMESPACE_DECLARATION_START namespace HASH_NAMESPACE {
-#define HASH_NAMESPACE_DECLARATION_END }
+#define S2_HASH_NAMESPACE_DECLARATION_START namespace HASH_NAMESPACE {
+#define S2_HASH_NAMESPACE_DECLARATION_END }
 #endif
 
 #endif  // S2_THIRD_PARTY_ABSL_BASE_PORT_H_

@@ -109,7 +109,7 @@ inline To down_cast(From& f) {
 // enumeration, identify the limits of the values of its enumerators.
 //
 //   enum A { A_min = -18, A_max = 33 };
-//   MAKE_ENUM_LIMITS(A, A_min, A_max)
+//   S2_MAKE_ENUM_LIMITS(A, A_min, A_max)
 //
 // Convert an int to an enum in one of two ways.  The prefered way is a
 // tight conversion, which ensures that A_min <= value <= A_max.
@@ -168,7 +168,7 @@ class enum_limits {
 // The specialization checks that the enumerators fit within an int.
 // This checking relies on integral promotion.
 
-#define MAKE_ENUM_LIMITS(ENUM_TYPE, ENUM_MIN, ENUM_MAX) \
+#define S2_MAKE_ENUM_LIMITS(ENUM_TYPE, ENUM_MIN, ENUM_MAX) \
 template <> \
 class enum_limits<ENUM_TYPE> { \
 public: \
@@ -206,7 +206,7 @@ public: \
 
 template <typename Enum>
 inline bool loose_enum_test(int e_val) {
-  static_assert(enum_limits<Enum>::is_specialized, "missing MAKE_ENUM_LIMITS");
+  static_assert(enum_limits<Enum>::is_specialized, "missing S2_MAKE_ENUM_LIMITS");
   const Enum e_min = enum_limits<Enum>::min_enumerator;
   const Enum e_max = enum_limits<Enum>::max_enumerator;
   static_assert(sizeof(e_val) == 4 || sizeof(e_val) == 8,
@@ -261,7 +261,7 @@ inline bool loose_enum_test(int e_val) {
 
 template <typename Enum>
 inline bool tight_enum_test(int e_val) {
-  static_assert(enum_limits<Enum>::is_specialized, "missing MAKE_ENUM_LIMITS");
+  static_assert(enum_limits<Enum>::is_specialized, "missing S2_MAKE_ENUM_LIMITS");
   const Enum e_min = enum_limits<Enum>::min_enumerator;
   const Enum e_max = enum_limits<Enum>::max_enumerator;
   return e_min <= e_val && e_val <= e_max;
