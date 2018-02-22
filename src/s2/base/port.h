@@ -292,7 +292,9 @@ inline void sized_delete_array(void *ptr, size_t size) {
 // defines __BYTE_ORDER for MSVC
 #ifdef _MSC_VER
 #define __BYTE_ORDER __LITTLE_ENDIAN
+#ifndef IS_LITTLE_ENDIAN
 #define IS_LITTLE_ENDIAN
+#endif
 #else
 
 // define the macros IS_LITTLE_ENDIAN or IS_BIG_ENDIAN
@@ -300,7 +302,9 @@ inline void sized_delete_array(void *ptr, size_t size) {
 // endian.h was included
 #ifdef __BYTE_ORDER
 #if __BYTE_ORDER == __LITTLE_ENDIAN
+#ifndef IS_LITTLE_ENDIAN
 #define IS_LITTLE_ENDIAN
+#endif
 #endif
 
 #if __BYTE_ORDER == __BIG_ENDIAN
@@ -310,7 +314,9 @@ inline void sized_delete_array(void *ptr, size_t size) {
 #else  // __BYTE_ORDER
 
 #if defined(__LITTLE_ENDIAN__)
+#ifndef IS_LITTLE_ENDIAN
 #define IS_LITTLE_ENDIAN
+#endif
 #elif defined(__BIG_ENDIAN__)
 #define IS_BIG_ENDIAN
 #endif
