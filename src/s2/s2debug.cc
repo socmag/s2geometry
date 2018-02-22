@@ -19,5 +19,7 @@
 
 #include <glog/logging.h>
 
+#ifdef USE_GOOGLE_DEPENDENCIES
 DEFINE_bool(s2debug, !!google::DEBUG_MODE,
             "Enable automatic validity checking in S2 code");
+#endif
