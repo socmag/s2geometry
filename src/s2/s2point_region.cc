@@ -55,7 +55,7 @@ void S2PointRegion::Encode(Encoder* encoder) const {
   for (int i = 0; i < 3; ++i) {
     encoder->putdouble(point_[i]);
   }
-  DCHECK_GE(encoder->avail(), 0);
+  S2_DCHECK_GE(encoder->avail(), 0);
 }
 
 bool S2PointRegion::Decode(Decoder* decoder) {

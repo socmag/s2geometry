@@ -152,7 +152,7 @@
 //   }
 //
 // Compilers can use the information that a certain branch is not likely to be
-// taken (for instance, a CHECK failure) to optimize for the common case in
+// taken (for instance, a S2_CHECK failure) to optimize for the common case in
 // the absence of better information (ie. compiling gcc with `-fprofile-arcs`).
 #if (ABSL_HAVE_BUILTIN(__builtin_expect) ||         \
      (defined(__GNUC__) && !defined(__clang__))) && \

@@ -221,12 +221,12 @@ class S1Interval {
 inline S1Interval::S1Interval(double lo, double hi) : bounds_(lo, hi) {
   if (lo == -M_PI && hi != M_PI) set_lo(M_PI);
   if (hi == -M_PI && lo != M_PI) set_hi(M_PI);
-  DCHECK(is_valid());
+  S2_DCHECK(is_valid());
 }
 
 inline S1Interval::S1Interval(double lo, double hi, ArgsChecked dummy)
   : bounds_(lo, hi) {
-  DCHECK(is_valid());
+  S2_DCHECK(is_valid());
 }
 
 inline S1Interval::S1Interval() : bounds_(M_PI, -M_PI) {
@@ -252,12 +252,12 @@ inline bool S1Interval::operator==(const S1Interval& y) const {
 
 inline void S1Interval::set_lo(double p) {
   bounds_[0] = p;
-  DCHECK(is_valid());
+  S2_DCHECK(is_valid());
 }
 
 inline void S1Interval::set_hi(double p) {
   bounds_[1] = p;
-  DCHECK(is_valid());
+  S2_DCHECK(is_valid());
 }
 
 inline std::ostream& operator<<(std::ostream& os, const S1Interval& x) {

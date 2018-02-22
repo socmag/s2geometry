@@ -155,9 +155,9 @@ TEST(S2EdgeUtil, IntersectionError) {
     max_point_dist = max(max_point_dist, point_dist);
   }
   stats.Print();
-  LOG(INFO) << "Max distance to either edge being intersected: "
+  S2_LOG(INFO) << "Max distance to either edge being intersected: "
             << max_edge_dist.radians();
-  LOG(INFO) << "Maximum distance to expected intersection point: "
+  S2_LOG(INFO) << "Maximum distance to expected intersection point: "
             << max_point_dist.radians();
 }
 

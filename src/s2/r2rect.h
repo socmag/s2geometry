@@ -164,18 +164,18 @@ class R2Rect {
 inline R2Rect::R2Rect(const R2Point& lo, const R2Point& hi) {
   bounds_[0] = R1Interval(lo.x(), hi.x());
   bounds_[1] = R1Interval(lo.y(), hi.y());
-  DCHECK(is_valid());
+  S2_DCHECK(is_valid());
 }
 
 inline R2Rect::R2Rect(const R1Interval& x, const R1Interval& y) {
   bounds_[0] = x;
   bounds_[1] = y;
-  DCHECK(is_valid());
+  S2_DCHECK(is_valid());
 }
 
 inline R2Rect::R2Rect() {
   // The default R1Interval constructor creates an empty interval.
-  DCHECK(is_valid());
+  S2_DCHECK(is_valid());
 }
 
 inline R2Rect R2Rect::Empty() {

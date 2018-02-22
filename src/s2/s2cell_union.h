@@ -356,13 +356,13 @@ inline S2CellUnion::S2CellUnion(std::vector<S2CellId> cell_ids)
 
 inline S2CellUnion S2CellUnion::FromNormalized(std::vector<S2CellId> cell_ids) {
   S2CellUnion result(std::move(cell_ids), VERBATIM);
-  DCHECK(result.IsNormalized());
+  S2_DCHECK(result.IsNormalized());
   return result;
 }
 
 inline S2CellUnion S2CellUnion::FromVerbatim(std::vector<S2CellId> cell_ids) {
   S2CellUnion result(std::move(cell_ids), VERBATIM);
-  DCHECK(result.IsValid());
+  S2_DCHECK(result.IsValid());
   return result;
 }
 

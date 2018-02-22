@@ -266,8 +266,8 @@ class Bits {
                                                 const int nbits) {
     typedef typename UnsignedType<T>::Type UnsignedT;
     const UnsignedT unsigned_src = bit_cast<UnsignedT>(src);
-    DCHECK_GT(sizeof(UnsignedT) * 8, offset);
-    DCHECK_GE(sizeof(UnsignedT) * 8, offset + nbits);
+    S2_DCHECK_GT(sizeof(UnsignedT) * 8, offset);
+    S2_DCHECK_GE(sizeof(UnsignedT) * 8, offset + nbits);
     return GetBitsImpl(unsigned_src, offset, nbits);
   }
 
@@ -281,8 +281,8 @@ class Bits {
                       T* const dest) {
     typedef typename UnsignedType<T>::Type UnsignedT;
     const UnsignedT unsigned_dest = bit_cast<UnsignedT>(*dest);
-    DCHECK_GT(sizeof(UnsignedT) * 8, offset);
-    DCHECK_GE(sizeof(UnsignedT) * 8, offset + nbits);
+    S2_DCHECK_GT(sizeof(UnsignedT) * 8, offset);
+    S2_DCHECK_GE(sizeof(UnsignedT) * 8, offset + nbits);
     const UnsignedT mask = NBitsFromLSB<UnsignedT>(nbits);
     const UnsignedT unsigned_result =
         (unsigned_dest & ~(mask << offset)) | ((value & mask) << offset);
@@ -316,7 +316,7 @@ class Bits {
                                                    const int index) {
     typedef typename UnsignedType<T>::Type UnsignedT;
     const UnsignedT unsigned_value = bit_cast<UnsignedT>(value);
-    DCHECK_GT(sizeof(UnsignedT) * 8, index);
+    S2_DCHECK_GT(sizeof(UnsignedT) * 8, index);
     return GetLowBitsImpl(unsigned_value, index);
   }
 

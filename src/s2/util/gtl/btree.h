@@ -2154,15 +2154,15 @@ void btree<P>::swap(self_type &x) {
 template <typename P>
 void btree<P>::verify() const {
   if (root() != nullptr) {
-    CHECK_EQ(size(), internal_verify(root(), nullptr, nullptr));
-    CHECK_EQ(leftmost(), (++const_iterator(root(), -1)).node);
-    CHECK_EQ(rightmost(), (--const_iterator(root(), root()->count())).node);
-    CHECK(leftmost()->leaf());
-    CHECK(rightmost()->leaf());
+    S2_CHECK_EQ(size(), internal_verify(root(), nullptr, nullptr));
+    S2_CHECK_EQ(leftmost(), (++const_iterator(root(), -1)).node);
+    S2_CHECK_EQ(rightmost(), (--const_iterator(root(), root()->count())).node);
+    S2_CHECK(leftmost()->leaf());
+    S2_CHECK(rightmost()->leaf());
   } else {
-    CHECK_EQ(size(), 0);
-    CHECK(leftmost() == nullptr);
-    CHECK(rightmost() == nullptr);
+    S2_CHECK_EQ(size(), 0);
+    S2_CHECK(leftmost() == nullptr);
+    S2_CHECK(rightmost() == nullptr);
   }
 }
 
@@ -2540,23 +2540,23 @@ void btree<P>::internal_clear(node_type *node) {
 template <typename P>
 int btree<P>::internal_verify(
     const node_type *node, const key_type *lo, const key_type *hi) const {
-  CHECK_GT(node->count(), 0);
-  CHECK_LE(node->count(), node->max_count());
+  S2_CHECK_GT(node->count(), 0);
+  S2_CHECK_LE(node->count(), node->max_count());
   if (lo) {
-    CHECK(!compare_keys(node->key(0), *lo));
+    S2_CHECK(!compare_keys(node->key(0), *lo));
   }
   if (hi) {
-    CHECK(!compare_keys(*hi, node->key(node->count() - 1)));
+    S2_CHECK(!compare_keys(*hi, node->key(node->count() - 1)));
   }
   for (int i = 1; i < node->count(); ++i) {
-    CHECK(!compare_keys(node->key(i), node->key(i - 1)));
+    S2_CHECK(!compare_keys(node->key(i), node->key(i - 1)));
   }
   int count = node->count();
   if (!node->leaf()) {
     for (int i = 0; i <= node->count(); ++i) {
-      CHECK(node->child(i) != nullptr);
-      CHECK_EQ(node->child(i)->parent(), node);
-      CHECK_EQ(node->child(i)->position(), i);
+      S2_CHECK(node->child(i) != nullptr);
+      S2_CHECK_EQ(node->child(i)->parent(), node);
+      S2_CHECK_EQ(node->child(i)->position(), i);
       count += internal_verify(
           node->child(i),
           (i == 0) ? lo : &node->key(i - 1),

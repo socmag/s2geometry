@@ -34,7 +34,7 @@ using std::unique_ptr;
 namespace {
 
 int NumVerticesAtLevel(int level) {
-  DCHECK(level >= 0 && level <= 14);  // Sanity / overflow check
+  S2_DCHECK(level >= 0 && level <= 14);  // Sanity / overflow check
   return 3 * (1 << (2 * level));      // 3*(4**level)
 }
 

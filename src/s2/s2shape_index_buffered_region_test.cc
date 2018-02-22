@@ -112,7 +112,7 @@ void TestBufferIndex(const string& index_str, S1Angle radius_angle,
   S1ChordAngle radius(radius_angle);
   S2ShapeIndexBufferedRegion region(index.get(), radius);
   S2CellUnion covering = coverer->GetCovering(region);
-  LOG(INFO) << "Covering uses " << covering.num_cells()
+  S2_LOG(INFO) << "Covering uses " << covering.num_cells()
             << " cells vs. max of " << coverer->options().max_cells();
   if (VLOG_IS_ON(2)) {
     // Output the cells in the covering for visualization purposes.

@@ -162,7 +162,7 @@ class R1Interval {
   // Return the closest point in the interval to the given point "p".
   // The interval must be non-empty.
   double Project(double p) const {
-    DCHECK(!is_empty());
+    S2_DCHECK(!is_empty());
     return std::max(lo(), std::min(hi(), p));
   }
 

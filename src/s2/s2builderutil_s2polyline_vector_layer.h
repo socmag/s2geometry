@@ -264,7 +264,7 @@ S2PolylineVectorLayer::Options::sibling_pairs() const {
 
 inline void S2PolylineVectorLayer::Options::set_sibling_pairs(
     SiblingPairs sibling_pairs) {
-  DCHECK(sibling_pairs == SiblingPairs::KEEP ||
+  S2_DCHECK(sibling_pairs == SiblingPairs::KEEP ||
          sibling_pairs == SiblingPairs::DISCARD);
   sibling_pairs_ = sibling_pairs;
 }

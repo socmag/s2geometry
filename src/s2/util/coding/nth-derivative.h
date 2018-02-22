@@ -103,7 +103,7 @@ class NthDerivativeCoder {
 
 inline NthDerivativeCoder::NthDerivativeCoder(int n) : n_(n) {
   if (n < N_MIN || n > N_MAX) {
-    LOG(ERROR) << "Unsupported N: " << n << ".  Using 0 instead.";
+    S2_LOG(ERROR) << "Unsupported N: " << n << ".  Using 0 instead.";
     n_ = 0;
   }
   Reset();

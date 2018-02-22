@@ -59,7 +59,7 @@ static bool ParseDouble(const string& str, double* value) {
 
 vector<S2LatLng> ParseLatLngsOrDie(string_view str) {
   vector<S2LatLng> latlngs;
-  CHECK(ParseLatLngs(str, &latlngs)) << ": str == \"" << str << "\"";
+  S2_CHECK(ParseLatLngs(str, &latlngs)) << ": str == \"" << str << "\"";
   return latlngs;
 }
 
@@ -78,7 +78,7 @@ bool ParseLatLngs(string_view str, vector<S2LatLng>* latlngs) {
 
 vector<S2Point> ParsePointsOrDie(string_view str) {
   vector<S2Point> vertices;
-  CHECK(ParsePoints(str, &vertices)) << ": str == \"" << str << "\"";
+  S2_CHECK(ParsePoints(str, &vertices)) << ": str == \"" << str << "\"";
   return vertices;
 }
 
@@ -93,7 +93,7 @@ bool ParsePoints(string_view str, vector<S2Point>* vertices) {
 
 S2Point MakePointOrDie(string_view str) {
   S2Point point;
-  CHECK(MakePoint(str, &point)) << ": str == \"" << str << "\"";
+  S2_CHECK(MakePoint(str, &point)) << ": str == \"" << str << "\"";
   return point;
 }
 
@@ -113,13 +113,13 @@ bool MakeLatLng(string_view str, S2LatLng* latlng) {
 
 S2LatLng MakeLatLngOrDie(string_view str) {
   S2LatLng latlng;
-  CHECK(MakeLatLng(str, &latlng)) << ": str == \"" << str << "\"";
+  S2_CHECK(MakeLatLng(str, &latlng)) << ": str == \"" << str << "\"";
   return latlng;
 }
 
 S2LatLngRect MakeLatLngRectOrDie(string_view str) {
   S2LatLngRect rect;
-  CHECK(MakeLatLngRect(str, &rect)) << ": str == \"" << str << "\"";
+  S2_CHECK(MakeLatLngRect(str, &rect)) << ": str == \"" << str << "\"";
   return rect;
 }
 
@@ -135,7 +135,7 @@ bool MakeLatLngRect(string_view str, S2LatLngRect* rect) {
 
 unique_ptr<S2Loop> MakeLoopOrDie(string_view str) {
   unique_ptr<S2Loop> loop;
-  CHECK(MakeLoop(str, &loop)) << ": str == \"" << str << "\"";
+  S2_CHECK(MakeLoop(str, &loop)) << ": str == \"" << str << "\"";
   return loop;
 }
 
@@ -160,7 +160,7 @@ std::unique_ptr<S2Loop> MakeLoop(absl::string_view str) {
 
 unique_ptr<S2Polyline> MakePolylineOrDie(string_view str) {
   unique_ptr<S2Polyline> polyline;
-  CHECK(MakePolyline(str, &polyline)) << ": str == \"" << str << "\"";
+  S2_CHECK(MakePolyline(str, &polyline)) << ": str == \"" << str << "\"";
   return polyline;
 }
 
@@ -177,7 +177,7 @@ std::unique_ptr<S2Polyline> MakePolyline(absl::string_view str) {
 
 unique_ptr<S2LaxPolylineShape> MakeLaxPolylineOrDie(string_view str) {
   unique_ptr<S2LaxPolylineShape> lax_polyline;
-  CHECK(MakeLaxPolyline(str, &lax_polyline)) << ": str == \"" << str << "\"";
+  S2_CHECK(MakeLaxPolyline(str, &lax_polyline)) << ": str == \"" << str << "\"";
   return lax_polyline;
 }
 
@@ -211,7 +211,7 @@ static bool InternalMakePolygon(string_view str, bool normalize_loops,
 
 unique_ptr<S2Polygon> MakePolygonOrDie(string_view str) {
   unique_ptr<S2Polygon> polygon;
-  CHECK(MakePolygon(str, &polygon)) << ": str == \"" << str << "\"";
+  S2_CHECK(MakePolygon(str, &polygon)) << ": str == \"" << str << "\"";
   return polygon;
 }
 
@@ -225,7 +225,7 @@ std::unique_ptr<S2Polygon> MakePolygon(absl::string_view str) {
 
 unique_ptr<S2Polygon> MakeVerbatimPolygonOrDie(string_view str) {
   unique_ptr<S2Polygon> polygon;
-  CHECK(MakeVerbatimPolygon(str, &polygon)) << ": str == \"" << str << "\"";
+  S2_CHECK(MakeVerbatimPolygon(str, &polygon)) << ": str == \"" << str << "\"";
   return polygon;
 }
 
@@ -239,7 +239,7 @@ std::unique_ptr<S2Polygon> MakeVerbatimPolygon(absl::string_view str) {
 
 unique_ptr<S2LaxPolygonShape> MakeLaxPolygonOrDie(string_view str) {
   unique_ptr<S2LaxPolygonShape> lax_polygon;
-  CHECK(MakeLaxPolygon(str, &lax_polygon)) << ": str == \"" << str << "\"";
+  S2_CHECK(MakeLaxPolygon(str, &lax_polygon)) << ": str == \"" << str << "\"";
   return lax_polygon;
 }
 
@@ -266,13 +266,13 @@ std::unique_ptr<S2LaxPolygonShape> MakeLaxPolygon(absl::string_view str) {
 
 unique_ptr<MutableS2ShapeIndex> MakeIndexOrDie(string_view str) {
   auto index = make_unique<MutableS2ShapeIndex>();
-  CHECK(MakeIndex(str, &index)) << ": str == \"" << str << "\"";
+  S2_CHECK(MakeIndex(str, &index)) << ": str == \"" << str << "\"";
   return index;
 }
 
 bool MakeIndex(string_view str, std::unique_ptr<MutableS2ShapeIndex>* index) {
   vector<string_view> strs = absl::StrSplit(str, '#');
-  DCHECK_EQ(3, strs.size()) << "Must contain two # characters: " << str;
+  S2_DCHECK_EQ(3, strs.size()) << "Must contain two # characters: " << str;
 
   vector<S2Point> points;
   for (const auto& point_str : SplitString(strs[0], '|')) {
