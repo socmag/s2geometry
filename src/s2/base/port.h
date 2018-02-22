@@ -174,10 +174,10 @@
 #define STATIC_ANALYSIS
 #endif  // __KLOCWORK__
 
-// SIZEOF_MEMBER, OFFSETOF_MEMBER
-#define SIZEOF_MEMBER(t, f) sizeof(reinterpret_cast<t *>(4096)->f)
+// S2_SIZEOF_MEMBER, S2_OFFSETOF_MEMBER
+#define S2_SIZEOF_MEMBER(t, f) sizeof(reinterpret_cast<t *>(4096)->f)
 
-#define OFFSETOF_MEMBER(t, f)                                  \
+#define S2_OFFSETOF_MEMBER(t, f)                                  \
   (reinterpret_cast<char *>(&(reinterpret_cast<t *>(16)->f)) - \
    reinterpret_cast<char *>(16))
 
@@ -1004,16 +1004,16 @@ extern inline void prefetch(const void *, int) {}
 // Obsolete (to be removed)
 // -----------------------------------------------------------------------------
 
-// FTELLO, FSEEKO
+// S2_FTELLO, S2_FSEEKO
 #if (defined(__GNUC__) || defined(__APPLE__)) && \
     !defined(SWIG)
-#define FTELLO ftello
-#define FSEEKO fseeko
+#define S2_FTELLO ftello
+#define S2_FSEEKO fseeko
 #else  // not GCC
 // These should be redefined appropriately if better alternatives to
 // ftell/fseek exist in the compiler
-#define FTELLO ftell
-#define FSEEKO fseek
+#define S2_FTELLO ftell
+#define S2_FSEEKO fseek
 #endif  // GCC
 
 // __STD
@@ -1023,13 +1023,13 @@ extern inline void prefetch(const void *, int) {}
 #define __STD std
 #endif
 
-// STREAM_SET, STREAM_SETF
+// S2_STREAM_SET, S2_STREAM_SETF
 #if defined __GNUC__
-#define STREAM_SET(s, bit) (s).setstate(std::ios_base::bit)
-#define STREAM_SETF(s, flag) (s).setf(std::ios_base::flag)
+#define S2_STREAM_SET(s, bit) (s).setstate(std::ios_base::bit)
+#define S2_STREAM_SETF(s, flag) (s).setf(std::ios_base::flag)
 #else
-#define STREAM_SET(s, bit) (s).set(std::ios::bit)
-#define STREAM_SETF(s, flag) (s).setf(std::ios::flag)
+#define S2_STREAM_SET(s, bit) (s).set(std::ios::bit)
+#define S2_STREAM_SETF(s, flag) (s).setf(std::ios::flag)
 #endif
 
 #endif  // S2_BASE_PORT_H_
